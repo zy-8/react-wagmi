@@ -1,0 +1,399 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a1c2c, #4b1248, #1a1c2c);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 添加动态背景动画 */
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* 添加浮动粒子效果 */
+.container::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: moveStars 20s linear infinite;
+    opacity: 0.5;
+}
+
+@keyframes moveStars {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-50px);
+    }
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    padding: 32px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transform: translateY(0);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.title {
+    color: white;
+    font-size: 32px;
+    margin-bottom: 24px;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    letter-spacing: 1px;
+}
+
+.connect-button {
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    background: linear-gradient(45deg, #2172E5, #4A90E2);
+    color: white;
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.connect-button:hover {
+    background: linear-gradient(45deg, #1859B7, #357ABD);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(33, 114, 229, 0.4);
+}
+
+.wallet-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.address {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 12px;
+    border-radius: 12px;
+    font-family: monospace;
+}
+
+.disconnect-button {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.disconnect-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.swap-container {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.input-container {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.input-container:focus-within {
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.token-input {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 28px;
+    width: 100%;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+}
+
+.token-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.token-symbol {
+    color: white;
+    font-weight: 600;
+    margin-left: 8px;
+}
+
+.actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.action-button {
+    padding: 14px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.action-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.deposit {
+    background: linear-gradient(45deg, #00A69C, #00D1C5);
+    color: white;
+    border: none;
+}
+
+.deposit:hover:not(:disabled) {
+    background: linear-gradient(45deg, #008F86, #00B8AE);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 166, 156, 0.4);
+}
+
+.withdraw {
+    background: linear-gradient(45deg, #F76707, #FF8A3D);
+    color: white;
+    border: none;
+}
+
+.withdraw:hover:not(:disabled) {
+    background: linear-gradient(45deg, #E05906, #F47A2E);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(247, 103, 7, 0.4);
+}
+
+.balance-container {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.balance-button {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.balance-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.balance-display {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 16px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+.balance-label {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.balance-amount {
+    color: white;
+    font-weight: 700;
+    font-size: 20px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* 添加响应式设计 */
+@media (max-width: 480px) {
+    .card {
+        padding: 24px;
+    }
+    
+    .title {
+        font-size: 24px;
+    }
+    
+    .token-input {
+        font-size: 24px;
+    }
+    
+    .actions {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 修改进度条容器样式 */
+.progress-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 200px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+}
+
+/* 进度条文本 */
+.progress-text {
+    color: white;
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+/* 进度条样式 */
+.progress-bar {
+    height: 4px;
+    background: linear-gradient(90deg, #00ff87, #60efff);
+    border-radius: 2px;
+    transition: width 0.5s ease;
+    box-shadow: 0 0 10px rgba(96, 239, 255, 0.6);
+}
+
+/* 深色主题 */
+.container.dark {
+    background: linear-gradient(135deg, #1a1c2c, #1a1c2c, #1a1c2c);
+}
+
+/* 浅色主题 */
+.container.light {
+    background: linear-gradient(135deg, #f6f7f9, #e3e7f0, #f6f7f9);
+}
+
+/* 主题切换按钮 */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.theme-toggle {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(360deg);
+}
+
+/* 根据主题调整卡片样式 */
+.light .card {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.light .title,
+.light .address,
+.light .token-input,
+.light .token-symbol,
+.light .balance-label,
+.light .balance-amount {
+    color: #1a1c2c;
+}
+
+.light .balance-display {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.light .input-container {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.light .token-input::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.light .disconnect-button {
+    color: #1a1c2c;
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+.light .disconnect-button:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* 调整进度条在浅色主题下的样式 */
+.light .progress-container {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.light .progress-text {
+    color: #1a1c2c;
+}
